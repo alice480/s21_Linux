@@ -13,7 +13,7 @@
 
 **== Выполнение ==**
 
-![image info](src/img/part1.png)
+![image info](./img/part1.png)
 
 ## Part 2. Создание пользователя
 
@@ -31,19 +31,19 @@ cat /etc/passwd
 
 - Создадим нового пользователя _school21_user_ с помощью команды `sudo adduser school21_user`
 
-![image info](src/img/part2_adduser.png)
+![image info](./img/part2_adduser.png)
 
 - Добавим данного пользователя в группу _adm_: `sudo usermod -a -G adm school21_user`
 
-![image info](src/img/part2_usermod.png)
+![image info](./img/part2_usermod.png)
 
 - Введем команду `cat /etc/passwd`
 
-![image info](src/img/part2_passwd.png)
+![image info](./img/part2_passwd.png)
 
 - Проверим, что информация о пользователе _school21_user_ присутствует в выводе:
 
-![image info](src/img/part2_ect_passwd.png)
+![image info](./img/part2_ect_passwd.png)
 
 ## Part 3. Настройка сети ОС
 
@@ -77,19 +77,19 @@ cat /etc/passwd
 
 
 - Введем команду `sudo hostname user-1`, чтобы задать имя хоста, которое сохранится и при перезапуске виртуальной машины
-![image info](src/img/part3_hostnamectl.png)
+![image info](./img/part3_hostnamectl.png)
 
 ---
 
 - Введем команду sudo timedatectl `set-timezone Europe/Moscow` и проверим, что временная зона была изменена
 
-![image info](src/img/part3_timedatectl.png)
+![image info](./img/part3_timedatectl.png)
 
 ---
 
 - Выведем названия сетевых интерфейсов в компактном виде при помощи `ip -br link show`
 
-![image info](src/img/part3_link_show.png)
+![image info](./img/part3_link_show.png)
 
 При выводе команды видно наличие интерфейса lo
 
@@ -98,7 +98,7 @@ cat /etc/passwd
 
 - Получим ip-адрес устройства от DHCP-сервера
 
-![image info](src/img/part3_dhcp.png)
+![image info](./img/part3_dhcp.png)
 
 Можно сделать вывод, что DHCP-сервер предложил используемому устройству адрес _10.0.2.0/24_, после чего он его использлование было подтверждено, и адрес закрепился за устройством.
 
@@ -108,11 +108,11 @@ cat /etc/passwd
 
 - Выведем внешний ip-адрес шлюза с помощью команды `curl icanhazip.com`
 
-![image info](src/img/part3_external_ip.png)
+![image info](./img/part3_external_ip.png)
 
 - Выведем внутренний ip-адрес шлюза с помощью команд `ip route | grep default` или `hostname -I`
 
-![image info](src/img/part3_default_ip.png)
+![image info](./img/part3_default_ip.png)
 
 ---
 
@@ -123,34 +123,34 @@ cat /etc/passwd
 
 - Проверим, что _network_ в положении _disabled_.
 
-![image info](src/img/part3_network_disabled.png)
+![image info](./img/part3_network_disabled.png)
 
 - Чтобы назначить статический IP-адрес в сетевом интерфейсе, откройем файл конфигурации YAML в текстовом редакторе:
 `sudo nano /etc/netplan/00-installer-config.yaml`
 
-![image info](src/img/part3_config_yaml.png)
+![image info](./img/part3_config_yaml.png)
 
 - Установим значение _dhcp4_ на _no_, чтобы отключить протокол DHCP, а также вручную зададим настройки _ip_, _gw_, _dns_
 
-![image info](src/img/part3_modified_config.png)
+![image info](./img/part3_modified_config.png)
 
 - Для применения внесенных изменений выполняем команду:
 
-![image info](src/img/part3_netplan_apply.png)
+![image info](./img/part3_netplan_apply.png)
 
 - Убедимся,что сетевой интерфейс настрроен на использование статического IP-адреса с помощью `ip route show`
 
-![image info](src/img/part3_ststic_ip.png)
+![image info](./img/part3_ststic_ip.png)
 
 - Перезапустим виртуальную машину и проверим, что файл с настройками не изменился
 
-![image info](src/img/part3_check_saving.png)
+![image info](./img/part3_check_saving.png)
 
 ---
 
 - Пропингуем удаленные хосты 1.1.1.1 и ya.ru
 
-![image info](src/img/part3_ping.png)
+![image info](./img/part3_ping.png)
 
 ## Part 4
 
@@ -164,13 +164,13 @@ cat /etc/passwd
 
 - Для обновления системынх пакетов используем команды _update_ для синхронизации индекса пакетов из репозиториев и _upgrade_  для установки самых новых версий пакетов, установленных в системе
 
-![image info](src/img/part4_update.png)
+![image info](./img/part4_update.png)
 
-![image info](src/img/part4_upgrade.png)
+![image info](./img/part4_upgrade.png)
 
 - Проверим, что сисетма была обновлена, повторно введя sudo apt-get upgrade и получив сообщение об обновлении 0 пакетов
 
-![image info](src/img/part4_no_updates.png)
+![image info](./img/part4_no_updates.png)
 
 ## Part 5
 
@@ -185,15 +185,15 @@ cat /etc/passwd
 
 - Добавим пользователя _school21_user_ в группу _sudo_
 
-![image info](src/img/part5_sudo.png)
+![image info](./img/part5_sudo.png)
 
 - Сменим пользователя на schol21_user с помощью команды su, введя пароль, заданный в Part 2 при создании пользователя
 
-![image info](src/img/part5_su.png)
+![image info](./img/part5_su.png)
 
 - Поменяем _hostmame_ от лица пользователя _school21_user_
 
-![image info](src/img/part5_hostnamectl.png)
+![image info](./img/part5_hostnamectl.png)
 
 > **sudo** (англ. Substitute User and do, дословно «подменить пользователя и выполнить») — программа для системного администрирования UNIX-систем, позволяющая делегировать те или иные привилегированные ресурсы пользователям с ведением протокола работы. Основная идея — дать пользователям как можно меньше прав, при этом достаточных для решения поставленных задач.
 
@@ -208,7 +208,7 @@ timedatectl show
 
 **== Выполнение ==**
 
-![image info](src/img/part6.png)
+![image info](./img/part6.png)
 
 ## Part 7. Установка и использование текстовых редакторов
 
@@ -239,20 +239,20 @@ timedatectl show
 
 - Установим недостающий редактор _joe_
 
-![image info](src/img/part7_install_joe.png)
+![image info](./img/part7_install_joe.png)
 
 ---
 
 - Запишем ник с помощью _vim_
 
-![image info](src/img/part7_nick_vim.png)
+![image info](./img/part7_nick_vim.png)
 - Для выхода с сохранением после нажатия _esc_ введем _:x_
 
 ---
 
 - Запишем ник с помощью _nano_
 
-![image info](src/img/part7_nick_nano.png)
+![image info](./img/part7_nick_nano.png)
 
 - Для выхода с сохранением воспользуемся _ctrl+x_ и при возникновении вопроса `Save modified buffer?` выберем _Y_
 
@@ -260,7 +260,7 @@ timedatectl show
 
 - Запишем ник с помощью _joe_
 
-![image info](src/img/part7_nick_joe.png)
+![image info](./img/part7_nick_joe.png)
 
 - Для выхода с сохранением воспользуемся _ctrl+k+x_
 
@@ -268,13 +268,13 @@ timedatectl show
 
 - Проверим, что были созданы файлы, содержащие ник _haricotw_
 
-![image info](src/img/part7_cat_nick.png)
+![image info](./img/part7_cat_nick.png)
 
 ---
 
 - Изменим test_vim.txt
 
-![image info](src/img/part7_vim_school21.png)
+![image info](./img/part7_vim_school21.png)
 
 - Для выхода без сохранения изменений после нажатия _esc_ введем _:q!_
 
@@ -282,7 +282,7 @@ timedatectl show
 
 - Изменим test_nano.txt
 
-![image info](src/img/part7_nano_school21.png)
+![image info](./img/part7_nano_school21.png)
 
 - Для выхода без сохранения изменений после _ctrl+x_ при возникновении `Save modified buffer?` выберем _N_
 
@@ -290,7 +290,7 @@ timedatectl show
 
 - Изменим test_joe.txt
 
-![image info](src/img/part7_joe_school21.png)
+![image info](./img/part7_joe_school21.png)
 
 - Для выхода без сохранения изменений после _ctrl+c_ при возникновении `Отменить изменения файла?` выберем _y_
 
@@ -298,11 +298,11 @@ timedatectl show
 
 - Отредактируем _test_vim.txt_ еще раз, сохранив изменения. После найдем слово _School_
 
-![image info](src/img/part7_find_vim.png)
+![image info](./img/part7_find_vim.png)
 
 - Заменим _Sch_ на _P_
 
-![image info](src/img/part7_replace_vim.png)
+![image info](./img/part7_replace_vim.png)
 
 - Выйдем, сохранив изменения
 
@@ -310,63 +310,63 @@ timedatectl show
 
 - Отредактируем _test_nano.txt_ и сохраним изменения. Найдем _oo_. Для этого воспользуемся _ctrl+W_, введем слово, нажмем _enter_
 
-![image info](src/img/part7_find_nano.png)
+![image info](./img/part7_find_nano.png)
 
-![image info](src/img/part7_find_res_nano.png.png)
+![image info](./img/part7_find_res_nano.png.png)
 
 - В результате сообщается о количестве совпадений, а курсор перемещается на начало найденной строки
 
 - Заменим _ool_ на _edule_. Для этого воспользуемся _ctrl+\_, введем заменяемое слово, нажмем enter
 
-![image info](src/img/part7_serch_to_replace_nano.png)
+![image info](./img/part7_serch_to_replace_nano.png)
 
 - Вводим слово для замены, нажимаем _enter_
 
-![image info](src/img/part7_replace.png)
+![image info](./img/part7_replace.png)
 
 - Подтверждаем замену, выбрав _Y_
 
-![image info](src/img/part7_replace_confirm_nano.png)
+![image info](./img/part7_replace_confirm_nano.png)
 
 - В резултате получаем новое слово, выходим с сохранением
 
-![image info](src/img/part7_replace_res_nano.png)
+![image info](./img/part7_replace_res_nano.png)
 
 ---
 
 - Отредактируем _test_joe.txt_ и сохраним изменения. Найдем _School_. Для этого воспользуемя сочетанием _ctrl+K+F_
 
-![image info](src/img/part7_find_joe.png)
+![image info](./img/part7_find_joe.png)
 
 - Поскольку поиск осуществляется с начала блока (файла), нажмем _enter_
 
-![image info](src/img/part7_find2_joe.png)
+![image info](./img/part7_find2_joe.png)
 
 - В результате курсор устанавливается на начало найденного слова
 
-![image info](src/img/part7_find_res_joe.png)
+![image info](./img/part7_find_res_joe.png)
 
 - Заменим все вхождения _21_ на _42_. Для этого воспользуемся _ctrl+K+F_, введем Заменяемое слово, нажмем _enter_
 
-![image info](src/img/part7_search_to_replace_joe.png)
+![image info](./img/part7_search_to_replace_joe.png)
 
 - Вводим _R_ для выбора операции замены, вводим слово для замены, нажимаем _enter_
 
-![image info](src/img/part7_replace_joe.png)
+![image info](./img/part7_replace_joe.png)
 
 - Выбираем вариант заменить все с помощью _R_
 
-![image info](src/img/part7_replace2_joe.png)
+![image info](./img/part7_replace2_joe.png)
 
 - В резултате получаем две замены, выходим с сохранением
 
-![image info](src/img/part7_replase_res_joe.png)
+![image info](./img/part7_replase_res_joe.png)
 
 ---
 
 Проверим, что все изменения были сохранены
 
-![image info](src/img/part7_replaces_results.png)
+![image info](./img/part7_replaces_results.png)
 
 
 ## Part 8. Установка и базовая настройка сервиса SSHD
@@ -396,34 +396,34 @@ timedatectl show
 
 - Установим _SSH_:
 
-![image info](src/img/part8_install_ssh.png)
-![image info](src/img/part8_install2_ssh.png)
+![image info](./img/part8_install_ssh.png)
+![image info](./img/part8_install2_ssh.png)
 
 - Установим _openssh_ (в данном случае сообщается о том, что _openssh_ уже установлен)
 
-![image info](src/img/part8_install_openssh.png)
+![image info](./img/part8_install_openssh.png)
 
 - Проверяем, что автостарт службы при загрузке системы был добавлен. На это указывает _enabled_ в _Loaded_
 
-![image info](src/img/part8_sshd_status.png)
+![image info](./img/part8_sshd_status.png)
 
 - Установим netstat, чтобы узнать, какие порты уже задействованы и не испольовать их повторно
 
-![image info](src/img/part8_sshd_status.png)
+![image info](./img/part8_sshd_status.png)
 
 - Выполним _sudo nano /etc/ssh/sshd_config_
 
-![image info](src/img/part8_config.png)
+![image info](./img/part8_config.png)
 
 - Поменяем _Port_ на _2022_ и выйдем, сохранив изменения. 
 
-![image info](src/img/part8_config2022.png)
+![image info](./img/part8_config2022.png)
 
 - Перезапустим службу SSH, чтобы изменения вступили в силу: `sudo systemctl restart ssh`
 
 - Проверим, запущен ли ssh-демон на вашем сервере с помощью команды ps
 
-![image info](src/img/part8_ps.png)
+![image info](./img/part8_ps.png)
 
 > Команда **_ps_**, сокращенно от _Process Status_, представляет собой утилиту командной строки, которая используется для отображения или просмотра информации, связанной с процессами, запущенными в системе Linux.
 
@@ -437,7 +437,7 @@ timedatectl show
 
 - Выполним _reboot_ и _netstat -tan_
 
-![image info](src/img/part8_netstat.png)
+![image info](./img/part8_netstat.png)
 
 > **_a_** выводит список всех портов и соединений независимо от их состояния или протокола
 
@@ -492,7 +492,7 @@ timedatectl show
 - Установим _htop_ `sudo apt install htop`
 - Выполним top
 
-![image info](src/img/part9_top.png)
+![image info](./img/part9_top.png)
 
     - uptime: 16 минут
     - количество авторизованных пользователей: 1
@@ -505,31 +505,31 @@ timedatectl show
 
 - _htop_, отсортированный по _PID_
 
-![image info](src/img/part9_htop_pid.png)
+![image info](./img/part9_htop_pid.png)
 
 - _htop_, отсортированный по _PERCENT_CPU_
 
-![image info](src/img/part9_htop_cpu.png)
+![image info](./img/part9_htop_cpu.png)
 
 - _htop_, отсортированный по _PERCENT_MEM_
 
-![image info](src/img/part9_htop_mem.png)
+![image info](./img/part9_htop_mem.png)
 
 - _htop_, отсортированный по _TIME_
 
-![image info](src/img/part9_htop_time.png)
+![image info](./img/part9_htop_time.png)
 
 - _htop_, отфильтрованный для процесса _sshd_
 
-![image info](src/img/part9_htop_sshd.png)
+![image info](./img/part9_htop_sshd.png)
 
 - _htop_, с найденным с помощбю поиска процессом syslog
 
-![image info](src/img/part9_syslog.png)
+![image info](./img/part9_syslog.png)
 
 - Добавленный вывод hostname, clock и uptime
 
-![image info](src/img/part9_htop_adding.png)
+![image info](./img/part9_htop_adding.png)
 
 
 ## Part 10. Использование утилиты fdisk
@@ -542,14 +542,14 @@ timedatectl show
 
 **== Выполнение ==**
 
-![image info](src/img/part10_fdisk.png)
+![image info](./img/part10_fdisk.png)
 
 - Название: VBOX HARDDISK
 - Размер: 20 Гб
 - Количество секторов: 41943040
 - Размер swap: 0 байт
 
-![image info](src/img/part10_swap.png)
+![image info](./img/part10_swap.png)
 
 ## Part 11. Part 11. Использование утилиты df
 
@@ -579,7 +579,7 @@ timedatectl show
 
 - Выполним `df`
 
-![image info](src/img/part11_df.png)
+![image info](./img/part11_df.png)
 
     - размер раздела: 10218772 Кб
     - размер занятого пространства: 3291064 Кб
@@ -590,7 +590,7 @@ timedatectl show
 
 - Выполним `df -Th`
 
-![image info](src/img/part11_df_th.png)
+![image info](./img/part11_df_th.png)
 
     - размер раздела: 9.8 Гб
     - размер занятого пространства: 3.2 Гб
@@ -614,15 +614,15 @@ timedatectl show
 
 - Выполним `du`
 
-![image info](src/img/part12_du.png)
+![image info](./img/part12_du.png)
 
 - Выведем размер папок _/home_, _/var_, _/var/log_ в человекочитаемом виде в байтах 
 
-![image info](src/img/part12_du_home_var_log.png)
+![image info](./img/part12_du_home_var_log.png)
 
 - Выведем размер каждого вложенного элемента в _/var/log_
 
-![image info](src/img/part12_varlog.png)
+![image info](./img/part12_varlog.png)
 
 
 ## Part 13. Установка и использование утилиты ncdu
@@ -640,19 +640,19 @@ timedatectl show
 
 - Установим _ncdu_
 
-![image info](src/img/part13_install.png)
+![image info](./img/part13_install.png)
 
 - Выведем размер папки _/home_
 
-![image info](src/img/part13_ncdu_home.png)
+![image info](./img/part13_ncdu_home.png)
 
 - Выведем размер папки _/var_
 
-![image info](src/img/part13_ncdu_var.png)
+![image info](./img/part13_ncdu_var.png)
 
 - Выведем размер папки _/var/log_
 
-![image info](src/img/part13_ncdu_varlog.png)
+![image info](./img/part13_ncdu_varlog.png)
 
 
 ## Part 14. Работа с системными журналами
@@ -675,15 +675,15 @@ timedatectl show
 
 - Откроем для просмотра _/var/log/dmesg_
 
-![image info](src/img/part14_dmesg.png)
+![image info](./img/part14_dmesg.png)
 
 - Откроем для просмотра _/var/log/syslog_
 
-![image info](src/img/part14_syslog.png)
+![image info](./img/part14_syslog.png)
 
 - Откроем для просмотра _/var/log/auth.log_ 
 
-![image info](src/img/part14_authlog.png)
+![image info](./img/part14_authlog.png)
 
 - Время последней успешной авторизации: _21:36:32_
 - Имя пользователя: _haricotw_
@@ -691,11 +691,11 @@ timedatectl show
 
 - Перезапустим службу SSHd: `systemctl restart ssh`
 
-![image info](src/img/part14_restart_sshd.png)
+![image info](./img/part14_restart_sshd.png)
 
 - Найдем в _/var/log/auth.log_ сообщение о рестарте службы _sshd_
 
-![image info](src/img/part14_log.png)
+![image info](./img/part14_log.png)
 
 
 ## Part 15. Использование планировщика заданий CRON
@@ -716,19 +716,19 @@ timedatectl show
 
 - Создадим файл расписания для текущего пользователя: `crontab -e`
 
-![image info](src/img/part15_cron.png)
+![image info](./img/part15_cron.png)
 
 - Просмотрим список текущих заданий для CRON
 
-![image info](src/img/part15_ctron_l.png)
+![image info](./img/part15_ctron_l.png)
 
 - Найдем в системном журнале строчки о выполнении _uptime_
 
-![image info](src/img/part15_uptime.png)
+![image info](./img/part15_uptime.png)
 
 - Удалим все задания из планировщика и проверим, что список заданий пуст 
 
-![image info](src/img/part15_delete.png)
+![image info](./img/part15_delete.png)
 
 
 
